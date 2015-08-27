@@ -59,8 +59,11 @@ background and finally whether or not your background should be repeated and on 
 #####Constants
 
 **Screen.FPS** - Default is 60.
+
 **Screen.ID** - Default is `null` and this will become the String that you pass into `Screen.create()`.
+
 **Screen.WIDTH** - Default is the window width. This will be overwritten by what you pass into `Screen.create()`.
+
 **Screen.HEIGHT** - Default is the window height. This will be overwritten by what you pass into `Screen.create()`.
 
 ###Player
@@ -85,6 +88,9 @@ to the players' current x and y positions. You can only call this function after
 #####Constants
 
 **Player.HEIGHT** - This is one of the values that is set in `setSize()`.
+
 **Player.WIDTH** - This is one of the values set in `setSize()`.
+
 **Player.X** - This is the X position of the player.
+
 **Player.Y** - This is the Y position of the player.
