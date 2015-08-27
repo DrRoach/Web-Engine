@@ -62,3 +62,29 @@ background and finally whether or not your background should be repeated and on 
 **Screen.ID** - Default is `null` and this will become the String that you pass into `Screen.create()`.
 **Screen.WIDTH** - Default is the window width. This will be overwritten by what you pass into `Screen.create()`.
 **Screen.HEIGHT** - Default is the window height. This will be overwritten by what you pass into `Screen.create()`.
+
+###Player
+
+The player object is the object that stores all information about the user playing. You will typically 
+only have one player object per game unless you want to create a local multiplayer game. You need 
+to make sure that you store the player object in a variable so you can use it in your code. You need 
+to initialize each player object individually.
+
+####Player.setSize(w, h)
+
+You can set the size of the player using this function. This is required so that the engine can detect 
+when there has been a collision between the player and other characters. The engine also needs to 
+know the size of the player so that it knows how big the player sprite needs to be when it draws it.
+
+####Player.setSprite(image, x, y)
+
+Use this to set the players' character sprite. The `x` and `y` parameters aren't required and default 
+to the players' current x and y positions. You can only call this function after you've called the 
+`setSize()` function or you wont be able to see your sprite.
+
+#####Constants
+
+**Player.HEIGHT** - This is one of the values that is set in `setSize()`.
+**Player.WIDTH** - This is one of the values set in `setSize()`.
+**Player.X** - This is the X position of the player.
+**Player.Y** - This is the Y position of the player.
