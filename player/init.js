@@ -30,11 +30,6 @@ function Player() {
         var y = y || this.Y;
 
         this.SPRITE = image;
-
-        /**
-         * Start the drawing loop
-         */
-        this.draw(this);
     }
 
     /**
@@ -77,6 +72,15 @@ function Player() {
      * @since Method available since Release 0.1.0
      */
     this.draw = function(self) {
+        //Create and cache sprite if not already
+        if (typeof self.SPRITE == "string") {
+            var i = new Image();
+            i.src = self.SPRITE;
+            i.addEventListener('load', function() {
+                self.SPRITE = i;
+            });
+        }
+        //First load will use image as String, all others should use it as obj
         new drawSprite(self.SPRITE, self.X, self.Y, self.WIDTH, self.HEIGHT);
     }
 

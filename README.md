@@ -94,13 +94,13 @@ know the size of the player so that it knows how big the player sprite needs to 
 ####Player.setSprite(image, x, y)
 
 Use this to set the players' character sprite. The `x` and `y` parameters aren't required and default 
-to the players' current x and y positions. You can only call this function after you've called the 
-`setSize()` function or you wont be able to see your sprite.
+to the players' current x and y positions.
 
 ####Player.draw(self)
 
 Redraw the player sprite on the screen. This is the main function that is used to draw the player, 
-The self parameter that it takes is the player object.
+The self parameter that it takes is the player object. You must call `Player.setSize()` before this 
+function or you wont be able to see your sprite as it will have a size of 0px x 0px.
 
 ####Player.move(direction, value)
 

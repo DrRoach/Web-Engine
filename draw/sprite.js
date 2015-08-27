@@ -16,9 +16,13 @@
  * @since Method available since Release 0.1.0
  */
 function drawSprite(image, x, y, w, h) {
-    var i = new Image();
-    i.src = image;
-    i.addEventListener('load', function() {
-        Screen.CTX.drawImage(i, x, y, w, h);
-    });
+    if (typeof image == "string") {
+        var i = new Image();
+        i.src = image;
+        i.addEventListener('load', function() {
+            Screen.CTX.drawImage(i, x, y, w, h);
+        });
+    } else {
+        Screen.CTX.drawImage(image, x, y, w, h);
+    }
 }
