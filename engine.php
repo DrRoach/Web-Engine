@@ -24,4 +24,5 @@ echo '<script src="/engine/engine.js"></script>';
  * Load all of the required scripts
  */
 echo '<script src="/engine/screen/init.js"></script>';
+echo '<script src="/engine/draw/sprite.js"></script>';
 echo '<script src="/engine/player/init.js"></script>';

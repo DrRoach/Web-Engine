@@ -6,6 +6,7 @@ function Player() {
     this.WIDTH = null;
     this.X = 0;
     this.Y = 0;
+    this.SPRITE = null;
 
     /**
      * Set the players' sprite
@@ -28,13 +29,12 @@ function Player() {
         var x = x || this.X;
         var y = y || this.Y;
 
-        var i = new Image();
-        i.src = image;
-        var player = this;
-        bg.addEventListener('load', function() {
-            Screen.CTX.drawImage(i, player.X, player.Y, player.WIDTH, player.HEIGHT);
-            return true;
-        });
+        this.SPRITE = image;
+
+        /**
+         * Start the drawing loop
+         */
+        this.draw(this);
     }
 
     /**
@@ -62,4 +62,25 @@ function Player() {
         this.WIDTH = w;
         this.HEIGHT = h;
     }
+
+    /**
+     * Draw the player sprite on the page
+     *
+     * Function used to draw the player sprite onto the page. This will be used when the character 
+     * is moved for example.
+     *
+     * @param Player self The player object so that all of the required data is there for when the 
+     *                    character is drawn
+     *
+     * @return null No return
+     *
+     * @since Method available since Release 0.1.0
+     */
+    this.draw = function(self) {
+        new drawSprite(self.SPRITE, self.X, self.Y, self.WIDTH, self.HEIGHT);
+    }
+
+    this.move = function(direction, value) {
+
+    } 
 }
