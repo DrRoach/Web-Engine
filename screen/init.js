@@ -20,9 +20,9 @@ Screen.HEIGHT = $(window).height();
  * the Screen object and populates it with all of the data that is required. If you try and 
  * call another Screen function before this one, you will get errors.
  *
- * @params String id The ID of the canvas that you are using for your screen
- * @params int    width The width of the screen
- * @params int    height The height of the screen
+ * @param String id The ID of the canvas that you are using for your screen
+ * @param int    width The width of the screen
+ * @param int    height The height of the screen
  *
  * @return Screen The screen object that is created
  *
