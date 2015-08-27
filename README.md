@@ -39,18 +39,18 @@ three simple parameters.
 
 Not passing one of these three variables will throw an error.
 
-####Screen.create()
+####Screen.create(id, width, height)
 
 As mentioned above, `Screen.create()` should be one of, if not, the first functions that you call 
 when using the endgine. It creates the Screen object and populates it with the data required.
 
-####Screen.setSize()
+####Screen.setSize(width, height)
 
 If you want to resize the screen after the `Screen.create()` call, you can call this function 
 independantly IF you have already called `Screen.create()` to populate the Screen object 
 with the required data.
 
-####Screen.setBackground()
+####Screen.setBackground(background, x, y, w, h, repeat)
 
 You can set the background of your game using this function. Using this function, you can set your 
 background image, the width and height of the background image, how wide and tall you want your 
