@@ -66,6 +66,18 @@ background and finally whether or not your background should be repeated and on 
 
 **Screen.HEIGHT** - Default is the window height. This will be overwritten by what you pass into `Screen.create()`.
 
+**Screen.BACKGROUND** - The background image that is used to paint the background. This is set in `Screen.setBackground()`.
+
+**Screen.X** - The background images' top left X position. This is set in `Screen.setBackground()`.
+
+**Screen.Y** - The background images' top left Y position. This is set in `Screen.setBackground()`.
+
+**Screen.REPEAT** - Whether or not the background repeats. This is set in `Screen.setBackground()`.
+
+**Screen.BACKGROUND_WIDTH** - The width of the background image. This is set in `Screen.setBackgroun()`.
+
+**Screen.BACKGROUND_HEIGHT** - The height of the background image. This is set in `Screen.setBackground()`.
+
 ###Player
 
 The player object is the object that stores all information about the user playing. You will typically 

@@ -6,6 +6,12 @@ var Screen = {};
 Screen.FPS = 60;
 Screen.ID = null;
 Screen.CTX = null;
+Screen.BACKGROUND = null;
+Screen.X = 0;
+Screen.Y = 0;
+Screen.REPEAT = false;
+Screen.BACKGROUND_WIDTH = null;
+Screen.BACKGROUND_HEIGHT = null;
 
 /**
  * On load logic
@@ -59,11 +65,9 @@ Screen.create = function(id, width, height) {
     Screen.WIDTH = width;
     Screen.HEIGHT = height;
 
-    //TODO: Make this work
     //Set the screen size
     //Screen.setSize(width, height);
 
-    //TODO: BOOKMARK
     //Create the canvas context
     var c = document.getElementById(id);
     Screen.CTX = c.getContext("2d");
@@ -115,9 +119,29 @@ Screen.setBackground = function(background, x, y, w, h, repeat) {
     var h = h || null;
     var repeat = repeat || 'false';
 
-    var bg = new Image();
-    bg.src = background;
-    bg.addEventListener('load', function() {
+    /**
+     * Store data that is needed on canvas redraws
+     */
+    Screen.X = x;
+    Screen.Y = y;
+    Screen.REPEAT = repeat;
+    Screen.BACKGROUND_WIDTH = w;
+    Screen.BACKGROUND_HEIGHT = h;
+
+    if (Screen.BACKGROUND == null) {
+        var bg = new Image();
+        bg.src = background;
+        bg.addEventListener('load', function() {
+            //If this is the first time the image is being drawn, cache it for redraws
+            Screen.BACKGROUND = bg;
+            drawBackground();
+        });
+    } else {
+        var bg = Screen.BACKGROUND;
+        drawBackground();
+    }
+
+    function drawBackground() {
         //If repeat has been passed as a boolean, make it a String
         if (repeat === true) {
             repeat = 'true';
@@ -157,5 +181,10 @@ Screen.setBackground = function(background, x, y, w, h, repeat) {
                 Screen.CTX.drawImage(bg, x, y, w, h);
             }
         }
-    });
+
+    }
+}
+
+Screen.clear = function() {
+    Screen.CTX.clearRect(0, 0, Screen.WIDTH, Screen.HEIGHT);
 }
