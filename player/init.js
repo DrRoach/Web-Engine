@@ -80,7 +80,38 @@ function Player() {
         new drawSprite(self.SPRITE, self.X, self.Y, self.WIDTH, self.HEIGHT);
     }
 
+    /**
+     * Move the player around the screen
+     *
+     * Move the player around the screen. The second parameter is the number of pixels to move the 
+     * player by. As a warning and future reference, this method is going to be worked on a lot over 
+     * the coming updates and so you should expect to see different behaviour from this in the future.
+     *
+     * @param String direction The direction that the player has moved, this can be either: UP, RIGHT, 
+     *                         DOWN or LEFT.
+     * @param int    value     The pixel value that the player has moved by.
+     *
+     * @return null            No return
+     *
+     * @since Method available since Release 0.1.0
+     */
     this.move = function(direction, value) {
-
+        switch(direction.toLowerCase()) {
+            case 'left':
+            case 'up':
+                value -= (value * 2);
+                break;
+        }
+        switch(direction.toLowerCase()) {
+            case 'right':
+            case 'left':
+                this.X += value;
+                break;
+            case 'up':
+            case 'down':
+                this.Y += value;
+                break;
+        }
+        this.draw(this);
     } 
 }

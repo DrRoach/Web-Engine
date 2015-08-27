@@ -85,6 +85,18 @@ Use this to set the players' character sprite. The `x` and `y` parameters aren't
 to the players' current x and y positions. You can only call this function after you've called the 
 `setSize()` function or you wont be able to see your sprite.
 
+####Player.draw(self)
+
+Redraw the player sprite on the screen. This is the main function that is used to draw the player, 
+The self parameter that it takes is the player object.
+
+####Player.move(direction, value)
+
+Move the player around the screen. The direction should be one of: UP, RIGHT, DOWN or LEFT and the 
+value that the player is moved by is the pixel value. As a warning and future reference, this method 
+is going to be worked on a lot over the coming updates so you should expect to see different behaviour 
+from this function in the near future.
+
 #####Constants
 
 **Player.HEIGHT** - This is one of the values that is set in `setSize()`.
@@ -94,3 +106,5 @@ to the players' current x and y positions. You can only call this function after
 **Player.X** - This is the X position of the player.
 
 **Player.Y** - This is the Y position of the player.
+
+**Player.SPRITE** - This is the current sprite that is being used by the player.
