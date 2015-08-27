@@ -1,0 +1,6 @@
+/*
+ * Set the canvas to block to avoid distortion from jQuery
+ */
+canvas {
+    display: block;
+}
