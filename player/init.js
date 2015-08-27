@@ -114,8 +114,6 @@ function Player() {
         }
         //Clear the screen and redraw the background
         Screen.clear();
-        Screen.setBackground(Screen.BACKGROUND, Screen.X, Screen.Y, Screen.BACKGROUND_WIDTH, 
-                Screen.BACKGROUND_HEIGHT, Screen.REPEAT);
 
         //Redraw the player sprite on the screen
         this.draw(this);
