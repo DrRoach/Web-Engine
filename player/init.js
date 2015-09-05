@@ -101,19 +101,17 @@ function Player() {
      */
     this.move = function(direction, value) {
         switch(direction.toLowerCase()) {
-            case 'left':
             case 'up':
-                value -= (value * 2);
+                this.Y -= value;
                 break;
-        }
-        switch(direction.toLowerCase()) {
             case 'right':
-            case 'left':
                 this.X += value;
                 break;
-            case 'up':
             case 'down':
                 this.Y += value;
+                break;
+            case 'left':
+                this.X -= value;
                 break;
         }
         //Clear the screen and redraw the background
