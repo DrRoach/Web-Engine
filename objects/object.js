@@ -61,6 +61,8 @@ function Object() {
      * @param int y The y position of where the object should be drawn
      *
      * @return null No return
+     *
+     * @since Method available since Release 0.1.0
      */
     this.draw = function(x, y) {
         //If either x or y aren't set use the global values
@@ -71,8 +73,39 @@ function Object() {
         }
     }
 
+    /**
+     * Move the object around the screen
+     *
+     * This is used to move the object around the screen.
+     *
+     * @param String direction The direction in which you want the object to move
+     * @param int    distance  The distance in pixels that you want the object to move
+     *
+     * @return boolean Whether the object was moved or not
+     *
+     * @since Method available since Release 0.1.0
+     */
     this.move = function(direction, speed) {
-
+        var moved = false;
+        switch(direction.toLowerCase()) {
+            case 'north':
+                this.Y -= speed;
+                moved = true;
+                break;
+            case 'east':
+                this.X += speed;
+                moved = true;
+                break;
+            case 'south':
+                this.Y += speed;
+                moved = true;
+                break;
+            case 'west':
+                this.X -= speed;
+                moved = true;
+                break;
+        }
+        return moved;
     }
 
     this.detectCollision = function(object) {
