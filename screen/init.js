@@ -188,7 +188,9 @@ Screen.setBackground = function(background, x, y, w, h, repeat) {
 Screen.clear = function() {
     Screen.CTX.clearRect(0, 0, Screen.WIDTH, Screen.HEIGHT);
 
-    //Whenever the screen is cleared, automatically redraw the background
-    Screen.setBackground(Screen.BACKGROUND, Screen.X, Screen.Y, Screen.BACKGROUND_WIDTH, 
+    if (Screen.BACKGROUND !== null) {
+        //Whenever the screen is cleared, automatically redraw the background
+        Screen.setBackground(Screen.BACKGROUND, Screen.X, Screen.Y, Screen.BACKGROUND_WIDTH,
             Screen.BACKGROUND_HEIGHT, Screen.REPEAT);
+    }
 }
