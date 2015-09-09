@@ -102,6 +102,15 @@ function Object() {
                 this.Y -= speed;
                 moved = true;
                 break;
+            case 'northeast':
+                this.Y -= speed;
+                this.X += speed;
+                moved = true;
+                break;
+            case 'northwest':
+                this.Y -= speed;
+                this.X -= speed;
+                break;
             case 'east':
                 this.X += speed;
                 moved = true;
@@ -109,6 +118,14 @@ function Object() {
             case 'south':
                 this.Y += speed;
                 moved = true;
+                break;
+            case 'southeast':
+                this.Y += speed;
+                this.X += speed;
+                break;
+            case 'southwest':
+                this.Y += speed;
+                this.X -= speed;
                 break;
             case 'west':
                 this.X -= speed;
