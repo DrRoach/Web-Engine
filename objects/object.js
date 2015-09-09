@@ -75,6 +75,11 @@ function Object() {
      * @since Method available since Release 0.1.0
      */
     this.draw = function(x, y) {
+        for (var i = 0; i < this.keys.length; i++) {
+            if (this.keys[i].pressed == true) {
+                this.keys[i].callback();
+            }
+        }
         //If either x or y aren't set use the global values
         if (x == null || y == null) {
             new drawSprite(this.SPRITE, this.X, this.Y, this.WIDTH, this.HEIGHT);
@@ -159,6 +164,26 @@ function Object() {
         this.X = x;
         this.Y = y;
    };
+
+    this.keys = [];
+    this.keyHold = function(key, callback) {
+        this.keys.push({"key": key, "pressed": false, "callback": callback});
+    };
+    document.addEventListener('keydown', keyListen.bind(null, this, 'down'));
+
+    document.addEventListener('keyup', keyListen.bind(null, this, 'up'));
+
+    function keyListen(obj, type, event) {
+        for (var i = 0; i < obj.keys.length; i++) {
+            if (obj.keys[i].key == event.keyCode) {
+                if (type == 'down') {
+                    obj.keys[i].pressed = true;
+                } else {
+                    obj.keys[i].pressed = false;
+                }
+            }
+        }
+    }
 
     this.detectCollision = function(object) {
 
