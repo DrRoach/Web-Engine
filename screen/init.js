@@ -14,12 +14,6 @@ Screen.BACKGROUND_WIDTH = null;
 Screen.BACKGROUND_HEIGHT = null;
 
 /**
- * On load logic
- */
-Screen.WIDTH = $(window).width();
-Screen.HEIGHT = $(window).height();
-
-/**
  * Create the Screen object
  *
  * This should be one of, if not, the first functions that you call in your code. It creates 
@@ -71,7 +65,7 @@ Screen.create = function(id, width, height) {
     //Create the canvas context
     var c = document.getElementById(id);
     Screen.CTX = c.getContext("2d");
-}
+};
 
 /**
  * Set the size of the Screen
@@ -91,7 +85,7 @@ Screen.create = function(id, width, height) {
 Screen.setSize = function(width, height) {
     $('#' + this.ID).width(width).height(height);
     return true;
-}
+};
 
 /**
  * Set the background of the Screen
@@ -141,6 +135,10 @@ Screen.setBackground = function(background, x, y, w, h, repeat) {
         drawBackground();
     }
 
+    /**
+     * Private function to draw the background onto the screen.
+     * TODO: Comment this more
+     */
     function drawBackground() {
         //If repeat has been passed as a boolean, make it a String
         if (repeat === true) {
@@ -183,8 +181,18 @@ Screen.setBackground = function(background, x, y, w, h, repeat) {
         }
 
     }
-}
+};
 
+/**
+ * Clear the screen and redraw the background
+ *
+ * When something needs to move on the screen, this function will clear the whole screen and then
+ * redraw the background onto the screen in a way that doesn't make the whole game lag.
+ *
+ * @return No return
+ *
+ * @since Method available since Release 0.1.0
+ */
 Screen.clear = function() {
     Screen.CTX.clearRect(0, 0, Screen.WIDTH, Screen.HEIGHT);
 
@@ -194,4 +202,27 @@ Screen.clear = function() {
         Screen.setBackground(Screen.BACKGROUND, Screen.X, Screen.Y, Screen.BACKGROUND_WIDTH,
             Screen.BACKGROUND_HEIGHT, Screen.REPEAT);
     }
-}
+};
+
+/**
+ * Set the FPS of the game
+ *
+ * This function is used to set the FPS of the whole game. NEVER override the Screen.FPS value manually
+ * because the Screen.TICK value will not be updated. ALWAYS use this function.
+ *
+ * @param int fps The number of frames per second that you want
+ *
+ * @return No return
+ *
+ * @since Method available since Release 0.1.0
+ */
+Screen.setFPS = function(fps) {
+    Screen.FPS = fps;
+    Screen.TICK = 1000 / fps;
+};
+
+//On load logic
+Screen.WIDTH = $(window).width();
+Screen.HEIGHT = $(window).height();
+//Set the Screen tick rate using the FPS
+Screen.TICK = Screen.setFPS(Screen.FPS);
