@@ -47,11 +47,14 @@ function Object() {
      * @since Method available since Release 0.1.0
      */
     this.setSprite = function(image, width, height) {
+        var img = new Image();
+        img.src = image;
+        img.addEventListener('load', cacheSprite.bind(null, this, img));
+
         var sizeSet = this.setSize(width, height);
         if (sizeSet === true) {
-            //Store the new image object
             this.SPRITE = image;
-
+            //Store the new image object
             return true;
         } else {
             return sizeSet;
@@ -122,5 +125,15 @@ function Object() {
 
     this.detectCollision = function(object) {
 
+    };
+
+    /**
+     * Function to be used as callback to cache image
+     *
+     * @param object
+     * @param image
+     */
+    function cacheSprite(object, image) {
+        object.SPRITE = image;
     };
 }
