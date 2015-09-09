@@ -1,9 +1,8 @@
 Web Game Engine
 ---
 
-This is a game engine written specifically for web games. HTML 5 games should be a viable option
-for development but due to quite a high complexity level to make them, they haven't really taken
-off as much as they should of done. This library is hopefully going to fix that.
+This game engine aims to make it so that developers can quickly and easily start building complex web
+based games.
 
 ###Roadmap
 
