@@ -221,8 +221,15 @@ Screen.setFPS = function(fps) {
     Screen.TICK = 1000 / fps;
 };
 
-//On load logic
+/**
+ * On load logic
+ */
 Screen.WIDTH = $(window).width();
 Screen.HEIGHT = $(window).height();
+//Screen constants so maths isn't needed at all
+Screen.TOP = 'TOP';
+Screen.RIGHT = 'RIGHT';
+Screen.BOTTOM = 'BOTTOM';
+Screen.LEFT = 'LEFT';
 //Set the Screen tick rate using the FPS
 Screen.setFPS(Screen.FPS);

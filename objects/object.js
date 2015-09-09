@@ -136,6 +136,26 @@ function Object() {
     };
 
     this.setPosition = function(x, y) {
+        if (typeof x == "string") {
+            switch (x.toLowerCase()) {
+                case 'left':
+                    x = 0;
+                    break;
+                case 'right':
+                    x = Screen.WIDTH - this.WIDTH;
+                    break;
+            }
+        }
+        if (typeof y == "string") {
+            switch(y.toLowerCase()) {
+                case 'top':
+                    y = 0;
+                    break;
+                case 'bottom':
+                    y = Screen.HEIGHT - this.HEIGHT;
+                    break;
+            }
+        }
         this.X = x;
         this.Y = y;
    };
