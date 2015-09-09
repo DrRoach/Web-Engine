@@ -31,7 +31,7 @@ function Object() {
         } else {
             return false;
         }
-    }
+    };
 
     /**
      * Set the objects' sprite image
@@ -49,7 +49,7 @@ function Object() {
         this.SPRITE = image;
 
         return true;
-    }
+    };
 
     /**
      * Draw the object onto the screen
@@ -71,7 +71,7 @@ function Object() {
         } else {
             new drawSprite(this.SPRITE, x, y, this.WIDTH, this.HEIGHT);
         }
-    }
+    };
 
     /**
      * Move the object around the screen
@@ -106,9 +106,14 @@ function Object() {
                 break;
         }
         return moved;
-    }
+    };
+
+    this.setPosition = function(x, y) {
+        this.X = x;
+        this.Y = y;
+   };
 
     this.detectCollision = function(object) {
 
-    }
+    };
 }
