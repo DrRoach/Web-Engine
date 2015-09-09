@@ -12,9 +12,8 @@ function Object() {
     /**
      * Set the objects' size
      *
-     * This is always the first function that should be called when you create a new object. It 
-     * allows the engine to know how big of a sprite should be drawn when required and it also allows 
-     * the engine to do logical things with the object such as collision detection.
+     * It allows the engine to know how big of a sprite should be drawn when required and it
+     * also allows the engine to do logical things with the object such as collision detection.
      *
      * @param int width  The width of the object
      * @param int height The height of the object
@@ -37,18 +36,26 @@ function Object() {
      * Set the objects' sprite image
      *
      * Use this function to add an image to the sprite so that people can see it in your game.
+     * setSprite also calls setSize so that you don't need to make multiple function calls.
      *
-     * @param String image The name of the image
+     * @param String image  The name of the image
+     * @param int    width  The width of the sprite
+     * @param int    height The height of the sprite
      *
      * @return boolean     Whether or not the sprite was successfully created
      *
      * @since Method available since Release 0.1.0
      */
-    this.setSprite = function(image) {
-        //Store the new image object
-        this.SPRITE = image;
+    this.setSprite = function(image, width, height) {
+        var sizeSet = this.setSize(width, height);
+        if (sizeSet === true) {
+            //Store the new image object
+            this.SPRITE = image;
 
-        return true;
+            return true;
+        } else {
+            return sizeSet;
+        }
     };
 
     /**
