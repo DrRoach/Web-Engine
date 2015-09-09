@@ -225,4 +225,4 @@ Screen.setFPS = function(fps) {
 Screen.WIDTH = $(window).width();
 Screen.HEIGHT = $(window).height();
 //Set the Screen tick rate using the FPS
-Screen.TICK = Screen.setFPS(Screen.FPS);
+Screen.setFPS(Screen.FPS);
