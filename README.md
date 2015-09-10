@@ -79,43 +79,56 @@ background and finally whether or not your background should be repeated and on 
 
 ###Player
 
-The player object is the object that stores all information about the user playing. You will typically 
-only have one player object per game unless you want to create a local multiplayer game. You need 
-to make sure that you store the player object in a variable so you can use it in your code. You need 
-to initialize each player object individually.
+The `player` object is now obsolete and you should instead use the `object` object to represent a player.
 
-####Player.setSize(w, h)
+###Object
 
-You can set the size of the player using this function. This is required so that the engine can detect 
-when there has been a collision between the player and other characters. The engine also needs to 
-know the size of the player so that it knows how big the player sprite needs to be when it draws it.
+This is the object that you use whenever you want to add anything such as a new player into the game. This object is
+used to control everything to do with things such as players, npcs and more.
 
-####Player.setSprite(image, x, y)
+To create a new object, you only need one simple line of code: `var player = new Object();`. That will create a new
+object that you can then play with how you wish.
 
-Use this to set the players' character sprite. The `x` and `y` parameters aren't required and default 
-to the players' current x and y positions.
+####Object.setSize(width, height)
 
-####Player.draw(self)
+This function sets the size of your object. This is used for a number of different things, including collision
+detection so you should always make sure that you call this for each of your objects. When you call `setSprite()`,
+this function is called as part of that so you probably won't ever need to call this function directly.
 
-Redraw the player sprite on the screen. This is the main function that is used to draw the player, 
-The self parameter that it takes is the player object. You must call `Player.setSize()` before this 
-function or you wont be able to see your sprite as it will have a size of 0px x 0px.
+####Object.setSprite(image, width, height)
 
-####Player.move(direction, value)
+This is usually the first function that you will call on each object. You use it to set the sprite image of the 
+object and also set the size of the object. As you probably already know by know, setting the size of each object is 
+important for doing things like collision detection for the object. The image should just be a string and the width 
+and height should be integer values.
 
-Move the player around the screen. The direction should be one of: UP, RIGHT, DOWN or LEFT and the 
-value that the player is moved by is the pixel value. As a warning and future reference, this method 
-is going to be worked on a lot over the coming updates so you should expect to see different behaviour 
-from this function in the near future.
+####Object.draw(x, y)
 
-#####Constants
+This function draws the object onto the page. If either the x or y values are blank or not valid integers, the x and 
+y position of the object will be used instead.
 
-**Player.HEIGHT** - This is one of the values that is set in `setSize()`.
+####Object.move(direction, speed)
 
-**Player.WIDTH** - This is one of the values set in `setSize()`.
+Used to move a object on the screen, the direction can be one of the following:
 
-**Player.X** - This is the X position of the player.
+- north
+- northeast
+- east
+- southeast
+- south
+- southwest
+- west
+- northwest
 
-**Player.Y** - This is the Y position of the player.
+The directions move the sprite in the directions that you would expect. The speed variable is the number of pixels 
+that you want the object to be moved by.
 
-**Player.SPRITE** - This is the current sprite that is being used by the player.
+####Object.setPosition(x, y)
+
+Set the position of the object on the scren. Both the x and y values either need to be integer values or one of the 
+four Screen constants:
+
+- Screen.TOP
+- Screen.RIGHT
+- Screen.BOTTOM
+- Screen.LEFT
