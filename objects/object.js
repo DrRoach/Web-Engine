@@ -140,6 +140,19 @@ function Object() {
         return moved;
     };
 
+    /**
+     * Set the position of the object
+     *
+     * Set the position of the object on the screen. You can also use the Screen position
+     * constants such as Screen.RIGHT to set the position correctly.
+     *
+     * @param int/String x The `x` position of the object
+     * @param int/String y The `y` position of the object
+     *
+     * @return No return
+     *
+     * @since Method available since Release 0.1.0
+     */
     this.setPosition = function(x, y) {
         if (typeof x == "string") {
             switch (x.toLowerCase()) {
@@ -173,6 +186,16 @@ function Object() {
 
     document.addEventListener('keyup', keyListen.bind(null, this, 'up'));
 
+    /**
+     * Function that handles key presses
+     *
+     * This is a function that should only be called from inside of the Object class.
+     * It is a callback function for both the keydown and keyup event listeners
+     *
+     * @param Object obj The Object object
+     * @param String type The type of key event
+     * @param KeyPressEvent event The keypress event that occurred
+     */
     function keyListen(obj, type, event) {
         for (var i = 0; i < obj.keys.length; i++) {
             if (obj.keys[i].key == event.keyCode) {
