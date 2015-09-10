@@ -75,9 +75,9 @@ function Object() {
      * @since Method available since Release 0.1.0
      */
     this.draw = function(x, y) {
-        for (var i = 0; i < this.keys.length; i++) {
-            if (this.keys[i].pressed == true) {
-                this.keys[i].callback();
+        for (var i = 0; i < keys.length; i++) {
+            if (keys[i].pressed == true) {
+                keys[i].callback();
             }
         }
         //If either x or y aren't set use the global values
@@ -178,35 +178,9 @@ function Object() {
         this.Y = y;
    };
 
-    this.keys = [];
     this.keyHold = function(key, callback) {
-        this.keys.push({"key": key, "pressed": false, "callback": callback});
+        keys.push({"key": key, "pressed": false, "callback": callback});
     };
-    document.addEventListener('keydown', keyListen.bind(null, this, 'down'));
-
-    document.addEventListener('keyup', keyListen.bind(null, this, 'up'));
-
-    /**
-     * Function that handles key presses
-     *
-     * This is a function that should only be called from inside of the Object class.
-     * It is a callback function for both the keydown and keyup event listeners
-     *
-     * @param Object obj The Object object
-     * @param String type The type of key event
-     * @param KeyPressEvent event The keypress event that occurred
-     */
-    function keyListen(obj, type, event) {
-        for (var i = 0; i < obj.keys.length; i++) {
-            if (obj.keys[i].key == event.keyCode) {
-                if (type == 'down') {
-                    obj.keys[i].pressed = true;
-                } else {
-                    obj.keys[i].pressed = false;
-                }
-            }
-        }
-    }
 
     this.detectCollision = function(object) {
 
@@ -215,10 +189,41 @@ function Object() {
     /**
      * Function to be used as callback to cache image
      *
+     * TODO: Comment this more and add it to README
+     *
      * @param object
      * @param image
      */
     function cacheSprite(object, image) {
         object.SPRITE = image;
-    };
+    }
+}
+
+var keys = [];
+document.addEventListener('keydown', keyListen.bind(null, 'down'));
+
+document.addEventListener('keyup', keyListen.bind(null, 'up'));
+
+/**
+ * Function that handles key presses
+ *
+ * This is a function that should only be called from inside of the Object class.
+ * It is a callback function for both the keydown and keyup event listeners
+ *
+ * TODO: Add this to README
+ *
+ * @param Object obj The Object object
+ * @param String type The type of key event
+ * @param KeyPressEvent event The keypress event that occurred
+ */
+function keyListen(type, event) {
+    for (var i = 0; i < keys.length; i++) {
+        if (keys[i].key == event.keyCode) {
+            if (type == 'down') {
+                keys[i].pressed = true;
+            } else {
+                keys[i].pressed = false;
+            }
+        }
+    }
 }
