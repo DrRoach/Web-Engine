@@ -75,11 +75,28 @@ function Object() {
      * @since Method available since Release 0.1.0
      */
     this.draw = function(x, y) {
+
+        for (var i = 0; i < this.collisionDetection.length; i++) {
+            var cur = this.collisionDetection[i];
+            var obj = cur.obj;
+            if ( (this.X > obj.X && this.X < (obj.X + obj.WIDTH)) || (this.X < obj.X && (this.X + this.WIDTH) > obj.X) ) {
+                if ( (this.Y > obj.Y && this.Y < (obj.Y + obj.HEIGHT)) || (this.Y < obj.Y && (this.Y + this.HEIGHT) > obj.Y) ) {
+                    cur.callback();
+                }
+            }
+        }
+
         for (var i = 0; i < keys.length; i++) {
             if (keys[i].pressed == true) {
                 keys[i].callback();
             }
         }
+
+        for (var i = 0; i < this.movements.length; i++) {
+            var obj = this.movements[i];
+            this.move(obj.direction, obj.speed);
+        }
+
         //If either x or y aren't set use the global values
         if (x == null || y == null) {
             new drawSprite(this.SPRITE, this.X, this.Y, this.WIDTH, this.HEIGHT);
@@ -182,8 +199,14 @@ function Object() {
         keys.push({"key": key, "pressed": false, "callback": callback});
     };
 
-    this.detectCollision = function(object) {
+    this.collisionDetection = [];
+    this.detectCollision = function(obj, callback) {
+        this.collisionDetection.push({obj: obj, callback: callback});
+    };
 
+    this.movements = [];
+    this.setMovement = function(direction, speed) {
+        this.movements = [{'direction': direction, 'speed': speed}];
     };
 
     /**
