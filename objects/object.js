@@ -208,18 +208,22 @@ function Object() {
                 case 'top':
                     obj.X = null;
                     obj.Y = 0;
+                    obj.HEIGHT = 0;
                     break;
                 case 'right':
                     obj.X = Screen.WIDTH;
                     obj.Y = null;
+                    obj.WIDTH = 0;
                     break;
                 case 'bottom':
                     obj.Y = Screen.HEIGHT;
                     obj.X = null;
+                    obj.HEIGHT = 0;
                     break;
                 case 'left':
                     obj.X = 0;
                     obj.Y = null;
+                    obj.WIDTH = 0;
                     break;
             }
         }
