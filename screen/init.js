@@ -136,6 +136,16 @@ Screen.setBackground = function(background, x, y, w, h, repeat) {
     }
 
     /**
+     * Check if there is any text to write to the screen and if there is, write it
+     */
+    for (var i = 0; i < textObjects.length; i++) {
+        var obj = textObjects[i];
+        Screen.CTX.font = obj.font;
+        Screen.CTX.fillStyle = obj.color;
+        Screen.CTX.fillText(obj.text, obj.x, obj.y);
+    }
+
+    /**
      * Private function to draw the background onto the screen.
      * TODO: Comment this more
      */

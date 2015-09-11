@@ -27,3 +27,4 @@ echo '<script src="/engine/screen/init.js"></script>';
 echo '<script src="/engine/draw/sprite.js"></script>';
 echo '<script src="/engine/objects/player.js"></script>';
 echo '<script src="/engine/objects/object.js"></script>';
+echo '<script src="/engine/draw/text.js"></script>';
