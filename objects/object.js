@@ -79,8 +79,8 @@ function Object() {
         for (var i = 0; i < this.collisionDetection.length; i++) {
             var cur = this.collisionDetection[i];
             var obj = cur.obj;
-            if ( (this.X > obj.X && this.X < (obj.X + obj.WIDTH)) || (this.X < obj.X && (this.X + this.WIDTH) > obj.X) ) {
-                if ( (this.Y > obj.Y && this.Y < (obj.Y + obj.HEIGHT)) || (this.Y < obj.Y && (this.Y + this.HEIGHT) > obj.Y) ) {
+            if ( (this.X >= obj.X && this.X <= (obj.X + obj.WIDTH)) || (this.X <= obj.X && (this.X + this.WIDTH) >= obj.X) || (obj.X == null)) {
+                if ( (this.Y >= obj.Y && this.Y <= (obj.Y + obj.HEIGHT)) || (this.Y <= obj.Y && (this.Y + this.HEIGHT) >= obj.Y) || (obj.Y == null)) {
                     cur.callback();
                 }
             }
@@ -201,6 +201,28 @@ function Object() {
 
     this.collisionDetection = [];
     this.detectCollision = function(obj, callback) {
+        if (typeof obj == "string") {
+            var side = obj;
+            obj = {};
+            switch (side.toLowerCase()) {
+                case 'top':
+                    obj.X = null;
+                    obj.Y = 0;
+                    break;
+                case 'right':
+                    obj.X = Screen.WIDTH;
+                    obj.Y = null;
+                    break;
+                case 'bottom':
+                    obj.Y = Screen.HEIGHT;
+                    obj.X = null;
+                    break;
+                case 'left':
+                    obj.X = 0;
+                    obj.Y = null;
+                    break;
+            }
+        }
         this.collisionDetection.push({obj: obj, callback: callback});
     };
 
