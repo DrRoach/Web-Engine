@@ -64,11 +64,25 @@ Text.prototype.setText = function(text) {
  *
  * @param String color The colour that you want the text to be
  *
- * @returns Text       Current Text object
+ * @return Text       Current Text object
  *
  * @since Method available since Release 0.1.0
  */
 Text.prototype.setColor = function(color) {
     textObjects[this.ID].color = color;
+    return this;
+};
+
+/**
+ * Remove text from screen
+ *
+ * Delete any text objects that you have previously created.
+ *
+ * @return Text Current Text object
+ *
+ * @since Method available since Release 0.1.0
+ */
+Text.prototype.remove = function() {
+    textObjects.splice(this.ID, 1);
     return this;
 };
