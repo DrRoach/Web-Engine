@@ -189,7 +189,6 @@ Screen.setBackground = function(background, x, y, w, h, repeat) {
                 Screen.CTX.drawImage(bg, x, y, w, h);
             }
         }
-
     }
 };
 

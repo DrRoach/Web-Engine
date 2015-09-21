@@ -75,7 +75,9 @@ function Object() {
      * @since Method available since Release 0.1.0
      */
     this.draw = function(x, y) {
-
+        /**
+         * For loop to detect object collisions
+         */
         for (var i = 0; i < this.collisionDetection.length; i++) {
             var cur = this.collisionDetection[i];
             var obj = cur.obj;
@@ -86,6 +88,9 @@ function Object() {
             }
         }
 
+        /**
+         * For loop to handle key presses
+         */
         for (var i = 0; i < keys.length; i++) {
             if (keys[i].pressed == true) {
                 keys[i].callback();
@@ -232,6 +237,7 @@ function Object() {
 
     this.movements = [];
     this.setMovement = function(direction, speed) {
+        this.DIRECTION = direction.toLowerCase();
         this.movements = [{'direction': direction, 'speed': speed}];
     };
 
