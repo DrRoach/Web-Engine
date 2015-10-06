@@ -231,6 +231,22 @@ Screen.setFPS = function(fps) {
 };
 
 /**
+ * Run a function after a set amount of time
+ *
+ * Can be used to give a countdown before a start of a game for example.
+ *
+ * @param float    seconds  The number of seconds for the timer to wait for in seconds
+ * @param function callback The callback function to be ran when the timer gets to the desired time
+ *
+ * @return No return
+ *
+ * @since Method available since Release 0.1.0
+ */
+Screen.timer = function(seconds, callback) {
+    setTimeout(callback, seconds * 1000);
+};
+
+/**
  * On load logic
  */
 Screen.WIDTH = $(window).width();
