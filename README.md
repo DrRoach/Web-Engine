@@ -5,7 +5,7 @@ This game engine aims to make it so that developers can quickly and easily start
 based games.
 
 ## This project has moved
-This project has moved to [Gitlab](https://gitlab.com/DrRoach/NetworkAPI).
+This project has moved to [Gitlab](https://gitlab.com/DrRoach/Web-Engine).
 
 ### Roadmap
 
